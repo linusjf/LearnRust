@@ -29,7 +29,7 @@ fn main() {
 
             let mut i = 0;
             while i < 255 && z.norm() <= 2.0 {
-                z = z * z + c;
+                z *= z + c;
                 i += 1;
             }
 
@@ -38,7 +38,6 @@ fn main() {
             *pixel = image::Rgb([data[0], i as u8, data[2]]);
         }
     }
-
     // Save the image as “fractal.png”, the format is deduced from the path
     imgbuf.save("fractal.png").unwrap();
 }
