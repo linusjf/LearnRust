@@ -1,6 +1,6 @@
 extern crate image;
 extern crate num;
-use image::png::PngEncoder;
+use image::png::PNGEncoder;
 use image::ColorType;
 use num::Complex;
 use std::fs::File;
@@ -142,11 +142,16 @@ fn render(
 /// file named `filename`.
 fn write_image(filename: &str, pixels: &[u8], bounds: (usize, usize)) -> Result<()> {
     let output = File::create(filename)?;
-    let encoder = PngEncoder::new(output);
+    let encoder = PNGEncoder::new(output);
     encoder
-        .encode(&pixels, bounds.0 as u32, bounds.1 as u32, ColorType::Rgba8)
+        .encode(
+            &pixels,
+            bounds.0 as u32,
+            bounds.1 as u32,
+            ColorType::Gray(8),
+        )
         .expect("Error encoding file");
-    Ok(())
+    return Ok(());
 }
 
 fn main() {
@@ -171,4 +176,5 @@ fn main() {
     let mut pixels = vec![0; bounds.0 * bounds.1];
     render(&mut pixels, bounds, upper_left, lower_right);
     write_image(&args[1], &pixels, bounds).expect("error writing PNG file");
+    std::process::exit(0);
 }
