@@ -7,6 +7,7 @@ fn main() {
     references();
     strings();
     print_fizzbuzz_to(100);
+    methods();
 }
 
 fn hello() {
@@ -76,10 +77,15 @@ fn strings() {
     println!("s3: {s3}");
 }
 
+/// Determine whether the first argument is divisible by the second argument.
+///
+/// If the second argument is zero, the result is false.
 fn is_divisible(n: u32, divisor: u32) -> bool {
+    // corner case
     if divisor == 0 {
         return false;
     }
+    // the last expression in a block is the return value
     n % divisor == 0
 }
 
@@ -97,4 +103,48 @@ fn print_fizzbuzz_to(n: u32) {
         print!(" {} ", fizzbuzz(i));
     }
     println!("")
+}
+
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn inc_width(&mut self, delta: u32) {
+        self.width += delta;
+    }
+
+    fn new(width: u32, height: u32) -> Rectangle {
+        Rectangle { width, height }
+    }
+
+    fn new_square(width: u32) -> Rectangle {
+        Rectangle {
+            width,
+            height: width,
+        }
+    }
+}
+
+fn methods() {
+    let mut rect = Rectangle {
+        width: 10,
+        height: 5,
+    };
+    println!("old area: {}", rect.area());
+    rect.inc_width(5);
+    println!("new area: {}", rect.area());
+    let mut rect = Rectangle::new(10, 5);
+    println!("old area: {}", rect.area());
+    rect.inc_width(5);
+    println!("new area: {}", rect.area());
+    let mut rect = Rectangle::new_square(10);
+    println!("square area: {}", rect.area());
+    rect.inc_width(5);
+    println!("new area: {}", rect.area());
 }
