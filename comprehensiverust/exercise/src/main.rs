@@ -8,6 +8,7 @@ fn main() {
     strings();
     print_fizzbuzz_to(100);
     methods();
+    generics();
 }
 
 fn hello() {
@@ -147,4 +148,17 @@ fn methods() {
     println!("square area: {}", rect.area());
     rect.inc_width(5);
     println!("new area: {}", rect.area());
+}
+
+fn pick_one<T>(a: T, b: T) -> T {
+    if std::process::id() % 2 == 0 {
+        a
+    } else {
+        b
+    }
+}
+
+fn generics() {
+    println!("coin toss: {}", pick_one("heads", "tails"));
+    println!("cash prize: {}", pick_one(500, 1000));
 }
