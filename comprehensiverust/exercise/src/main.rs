@@ -172,4 +172,6 @@ fn conversions() {
     let x: i8 = 15;
     let y: i16 = 1000;
     println!("{x} * {y} = {}", multiply(x as i16, y));
+    println!("{x} * {y} = {}", multiply(i16::from(x), y));
+    println!("{x} * {y} = {}", multiply(x.into(), y));
 }
