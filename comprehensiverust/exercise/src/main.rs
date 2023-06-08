@@ -22,6 +22,7 @@ fn main() {
     copyclone();
     borrowing();
     stackreturns();
+    shareduniqueborrows();
 }
 
 fn hello() {
@@ -387,4 +388,16 @@ fn stackreturns() {
     let p3 = add(&p1, &p2);
     println!("&p3.0: {:p}", &p3.0);
     println!("{p1:?} + {p2:?} = {p3:?}");
+}
+
+fn shareduniqueborrows() {
+    let mut a: i32 = 10;
+    let b: &i32 = &a;
+    println!("b: {b}");
+    {
+        let c: &mut i32 = &mut a;
+        *c = 20;
+    }
+    // println!("b: {b}");
+    println!("a: {a}");
 }
