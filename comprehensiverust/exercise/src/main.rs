@@ -19,6 +19,7 @@ fn main() {
     scopes();
     stackmemory();
     movesemantics();
+    copyclone();
 }
 
 fn hello() {
@@ -342,4 +343,25 @@ fn movesemantics() {
     let name = &String::from("Alice");
     hello(name);
     hello(name);
+}
+
+#[derive(Copy, Clone, Debug)]
+struct Point(i32, i32);
+
+#[derive(Clone, Debug)]
+struct Point2D(i32, i32, String);
+
+fn copyclone() {
+    let x = 42;
+    let y = x;
+    println!("x: {x}");
+    println!("y: {y}");
+    let p1 = Point(3, 4);
+    let p2 = p1;
+    println!("p1: {p1:?}");
+    println!("p2: {p2:?}");
+    let p1 = Point2D(3, 4, String::from("2D"));
+    let p2 = p1.clone();
+    println!("p1: {p1:?}");
+    println!("p2: {p2:?}");
 }
