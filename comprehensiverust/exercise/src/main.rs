@@ -330,4 +330,16 @@ fn movesemantics() {
     let s2: String = s1.clone();
     println!("s2: {s2}");
     println!("s1: {s1}");
+
+    fn say_hello(name: String) {
+        println!("Hello, {name}!")
+    }
+    fn hello(name: &String) {
+        println!("Hello, {name}!")
+    }
+    let name = String::from("Alice");
+    say_hello(name);
+    let name = &String::from("Alice");
+    hello(name);
+    hello(name);
 }
