@@ -13,6 +13,7 @@ fn main() {
     forloops();
     printtranspose();
     variables();
+    typeinferences();
 }
 
 fn hello() {
@@ -231,4 +232,21 @@ fn variables() {
     println!("x: {x}");
     x = 20;
     println!("x: {x}");
+}
+
+fn takes_u32(x: u32) {
+    println!("u32: {x}");
+}
+
+fn takes_i8(y: i8) {
+    println!("i8: {y}");
+}
+
+fn typeinferences() {
+    let x = 10;
+    let y = 20;
+
+    takes_u32(x);
+    takes_i8(y);
+    takes_u32(y as u32);
 }
