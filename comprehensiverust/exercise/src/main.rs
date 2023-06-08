@@ -18,6 +18,7 @@ fn main() {
     banner();
     scopes();
     stackmemory();
+    movesemantics();
 }
 
 fn hello() {
@@ -319,4 +320,14 @@ fn stackmemory() {
         let (capacity, ptr, len): (usize, usize, usize) = std::mem::transmute(s1);
         println!("ptr = {ptr:#x}, len = {len}, capacity = {capacity}");
     }
+}
+
+fn movesemantics() {
+    let s1: String = String::from("Hello!");
+    let s2: String = s1;
+    println!("s2: {s2}");
+    let s1: String = String::from("Hello!");
+    let s2: String = s1.clone();
+    println!("s2: {s2}");
+    println!("s1: {s1}");
 }
