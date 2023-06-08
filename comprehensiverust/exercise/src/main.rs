@@ -16,6 +16,7 @@ fn main() {
     typeinferences();
     constants();
     banner();
+    scopes();
 }
 
 fn hello() {
@@ -280,4 +281,28 @@ static BANNER: &str = "Welcome to RustOS 3.14";
 
 fn banner() {
     println!("{BANNER}");
+}
+
+fn scopes() {
+    let a = 10;
+    println!("before: {a}");
+
+    {
+        let a = "hello";
+        println!("inner scope: {a}");
+
+        let a = true;
+        println!("shadowed in inner scope: {a}");
+    }
+
+    println!("after: {a}");
+
+    let a = 1;
+    let mut d = 10;
+    let b = &a;
+    let c = &mut d;
+    let a = a + 1;
+    *c = *c + 1;
+    drop(c);
+    println!("{a} {b} {d}");
 }
