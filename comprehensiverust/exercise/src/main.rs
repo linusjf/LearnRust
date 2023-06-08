@@ -12,6 +12,7 @@ fn main() {
     conversions();
     forloops();
     printtranspose();
+    variables();
 }
 
 fn hello() {
@@ -223,4 +224,11 @@ fn printtranspose() {
     let transposed = transpose(matrix);
     println!("transposed:");
     pretty_print(&transposed);
+}
+
+fn variables() {
+    let mut x: i32 = 10;
+    println!("x: {x}");
+    x = 20;
+    println!("x: {x}");
 }
