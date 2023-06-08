@@ -10,6 +10,7 @@ fn main() {
     methods();
     generics();
     conversions();
+    forloops();
 }
 
 fn hello() {
@@ -174,4 +175,20 @@ fn conversions() {
     println!("{x} * {y} = {}", multiply(x as i16, y));
     println!("{x} * {y} = {}", multiply(i16::from(x), y));
     println!("{x} * {y} = {}", multiply(x.into(), y));
+}
+
+fn forloops() {
+    let array = [10, 20, 30];
+    println!("array: {array:?}");
+    print!("Iterating over array:");
+    for n in array {
+        print!(" {n}");
+    }
+    println!();
+
+    print!("Iterating over range:");
+    for i in 0..3 {
+        print!(" {}", array[i]);
+    }
+    println!();
 }
