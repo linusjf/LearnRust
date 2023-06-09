@@ -419,4 +419,5 @@ fn lifetimes() {
         p3 = left_most(&p1, &p2);
         println!("left-most point: {:?}", p3);
     }
+    // println!("left-most point: {:?}", p3);
 }
