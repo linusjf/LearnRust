@@ -25,6 +25,7 @@ fn main() {
     shareduniqueborrows();
     lifetimes();
     lifetimesds();
+    vectors();
 }
 
 fn hello() {
@@ -438,4 +439,14 @@ fn lifetimesds() {
     println!("{fox:?}");
     println!("{dog:?}");
     erase(text);
+}
+
+fn vectors() {
+    let mut vec = vec![10, 20];
+    vec.push(30);
+    let midpoint = vec.len() / 2;
+    println!("middle value: {}", vec[midpoint]);
+    for item in &vec {
+        println!("item: {item}");
+    }
 }
