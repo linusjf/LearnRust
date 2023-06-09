@@ -1,3 +1,5 @@
+mod library;
+
 fn main() {
     hello();
     rawstrings();
@@ -26,6 +28,7 @@ fn main() {
     lifetimes();
     lifetimesds();
     vectors();
+    library::main();
 }
 
 fn hello() {
