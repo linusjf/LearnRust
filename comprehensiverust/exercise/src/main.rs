@@ -24,6 +24,7 @@ fn main() {
     stackreturns();
     shareduniqueborrows();
     lifetimes();
+    lifetimesds();
 }
 
 fn hello() {
@@ -420,4 +421,21 @@ fn lifetimes() {
         println!("left-most point: {:?}", p3);
     }
     // println!("left-most point: {:?}", p3);
+}
+
+#[derive(Debug)]
+struct Highlight<'doc>(&'doc str);
+
+fn erase(text: String) {
+    println!("Bye, bye, Ms. American Pie! {text}!");
+}
+
+fn lifetimesds() {
+    let text = String::from("The quick brown fox jumps over the lazy dog");
+    let fox = Highlight(&text[4..19]);
+    let dog = Highlight(&text[35..43]);
+    // erase(text);
+    println!("{fox:?}");
+    println!("{dog:?}");
+    erase(text);
 }
