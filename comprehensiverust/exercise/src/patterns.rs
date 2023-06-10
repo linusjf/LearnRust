@@ -16,6 +16,7 @@ pub fn main() {
             Result::Err(msg) => println!("sorry, an error happened: {msg}"),
         }
     }
+    destructs();
 }
 
 enum Result {
@@ -28,5 +29,26 @@ fn divide_in_two(n: i32) -> Result {
         Result::Ok(n / 2)
     } else {
         Result::Err(format!("cannot divide {n} into two equal parts"))
+    }
+}
+
+struct Foo {
+    x: (u32, u32),
+    y: u32,
+}
+
+fn destructs() {
+    let foos = [
+        Foo { x: (1, 2), y: 3 },
+        Foo { x: (2, 3), y: 2 },
+        Foo { x: (4, 8), y: 6 },
+    ];
+    const Z: u32 = 2;
+    for foo in foos {
+        match foo {
+            Foo { x: (1, b), y } => println!("x.0 = 1, b = {b}, y = {y}"),
+            Foo { y: Z, x: i } => println!("y = 2, x = {i:?}"),
+            Foo { y, .. } => println!("y = {y}, other fields were ignored"),
+        }
     }
 }
