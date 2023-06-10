@@ -1,3 +1,4 @@
+mod iter;
 mod library;
 
 fn main() {
@@ -29,6 +30,7 @@ fn main() {
     lifetimesds();
     vectors();
     library::main();
+    iter::main();
 }
 
 fn hello() {
