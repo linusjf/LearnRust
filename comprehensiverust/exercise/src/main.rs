@@ -2,6 +2,7 @@ mod enums;
 mod iter;
 mod library;
 mod methods;
+mod patterns;
 mod structs;
 
 fn main() {
@@ -37,6 +38,7 @@ fn main() {
     structs::main();
     enums::main();
     methods::main();
+    patterns::main();
 }
 
 fn hello() {
