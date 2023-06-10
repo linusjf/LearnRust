@@ -51,4 +51,13 @@ fn destructs() {
             Foo { y, .. } => println!("y = {y}, other fields were ignored"),
         }
     }
+    let triples = [[0, -2, 3], [1, 2, 3], [4, 5, 6]];
+    for triple in triples {
+        println!("Tell me about {triple:?}");
+        match triple {
+            [0, y, z] => println!("First is 0, y = {y}, and z = {z}"),
+            [1, ..] => println!("First is 1 and the rest were ignored"),
+            _ => println!("All elements were ignored"),
+        }
+    }
 }
