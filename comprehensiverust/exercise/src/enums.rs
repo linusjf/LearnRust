@@ -1,4 +1,5 @@
 use std::mem;
+use std::mem::{align_of, size_of};
 
 fn generate_random_number() -> u32 {
     std::process::id()
@@ -40,6 +41,24 @@ enum Foo {
     C(i32),
 }
 
+macro_rules! dbg_size {
+    ($t:ty) => {
+        println!(
+            "{}: size {} bytes, align: {} bytes",
+            stringify!($t),
+            size_of::<$t>(),
+            align_of::<$t>()
+        );
+    };
+}
+
+#[repr(u32)]
+enum Bar {
+    A, // 0
+    B = 10000,
+    C, // 10001
+}
+
 pub fn main() {
     println!("You got: {:?}", flip_coin());
     let load = WebEvent::PageLoad;
@@ -58,4 +77,12 @@ pub fn main() {
     );
     assert_eq!(mem::discriminant(&Foo::B(1)), mem::discriminant(&Foo::B(2)));
     assert_ne!(mem::discriminant(&Foo::B(3)), mem::discriminant(&Foo::C(3)));
+    dbg_size!(Foo);
+    println!("A: {}", Bar::A as u32);
+    println!("B: {}", Bar::B as u32);
+    println!("C: {}", Bar::C as u32);
+    dbg_size!(bool);
+    dbg_size!(Option<bool>);
+    dbg_size!(&i32);
+    dbg_size!(Option<&i32>);
 }
