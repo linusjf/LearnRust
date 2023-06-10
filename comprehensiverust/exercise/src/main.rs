@@ -1,3 +1,4 @@
+mod enums;
 mod iter;
 mod library;
 mod structs;
@@ -33,6 +34,7 @@ fn main() {
     library::main();
     iter::main();
     structs::main();
+    enums::main();
 }
 
 fn hello() {
