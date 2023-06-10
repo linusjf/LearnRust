@@ -1,5 +1,6 @@
 mod iter;
 mod library;
+mod structs;
 
 fn main() {
     hello();
@@ -31,6 +32,7 @@ fn main() {
     vectors();
     library::main();
     iter::main();
+    structs::main();
 }
 
 fn hello() {
