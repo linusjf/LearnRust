@@ -1,9 +1,11 @@
+#![recursion_limit = "1000"]
 mod enums;
 mod health;
 mod iter;
 mod library;
 mod methods;
 mod patterns;
+mod polygon;
 mod structs;
 
 fn main() {
@@ -41,6 +43,7 @@ fn main() {
     methods::main();
     patterns::main();
     health::main();
+    polygon::main();
 }
 
 fn hello() {

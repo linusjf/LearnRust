@@ -1,3 +1,4 @@
+#![allow(unused_variables, dead_code)]
 #[derive(Debug)]
 struct Person {
     name: String,

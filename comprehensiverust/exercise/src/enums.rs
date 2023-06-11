@@ -1,4 +1,4 @@
-#![recursion_limit = "1000"]
+#![allow(unused_variables, dead_code, unused_macros)]
 use std::mem;
 use std::mem::transmute;
 use std::mem::{align_of, size_of};
