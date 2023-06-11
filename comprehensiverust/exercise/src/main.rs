@@ -1,4 +1,5 @@
 #![recursion_limit = "1000"]
+mod blocks;
 mod enums;
 mod health;
 mod iter;
@@ -44,6 +45,7 @@ fn main() {
     patterns::main();
     health::main();
     polygon::main();
+    blocks::main();
 }
 
 fn hello() {
