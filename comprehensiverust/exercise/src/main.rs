@@ -1,4 +1,5 @@
 mod enums;
+mod health;
 mod iter;
 mod library;
 mod methods;
@@ -39,6 +40,7 @@ fn main() {
     enums::main();
     methods::main();
     patterns::main();
+    health::main();
 }
 
 fn hello() {
