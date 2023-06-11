@@ -63,6 +63,7 @@ fn destructs() {
     inspect(&[0, -2, 3]);
     inspect(&[0, -2, 3, 4]);
     inspect(&[1, -2, 3, 4, 5]);
+    inspect(&[2, -2, 3, 4, 5]);
 }
 
 fn inspect(slice: &[i32]) {
@@ -70,6 +71,7 @@ fn inspect(slice: &[i32]) {
     match slice {
         &[0, y, z] => println!("First is 0, y = {y}, and z = {z}"),
         &[1, ..] => println!("First is 1 and the rest were ignored"),
+        &[.., 5] => println!("Last is 5 and the rest were ignored"),
         _ => println!("All elements were ignored"),
     }
 }
