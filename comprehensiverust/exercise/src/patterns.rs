@@ -64,6 +64,10 @@ fn destructs() {
     inspect(&[0, -2, 3, 4]);
     inspect(&[1, -2, 3, 4, 5]);
     inspect(&[2, -2, 3, 4, 5]);
+    inspect_pair(&(2, -2));
+    inspect_pair(&(2, 2));
+    inspect_pair(&(1, 2));
+    inspect_pair(&(0, 2));
 }
 
 fn inspect(slice: &[i32]) {
@@ -73,5 +77,15 @@ fn inspect(slice: &[i32]) {
         &[1, ..] => println!("First is 1 and the rest were ignored"),
         &[.., 5] => println!("Last is 5 and the rest were ignored"),
         _ => println!("All elements were ignored"),
+    }
+}
+
+fn inspect_pair(pair: &(i32, i32)) {
+    println!("Tell me about {pair:?}");
+    match pair {
+        (x, y) if x == y => println!("These are twins"),
+        (x, y) if x + y == 0 => println!("Antimatter, kaboom!"),
+        (x, _) if x % 2 == 1 => println!("The first one is odd"),
+        _ => println!("No correlation..."),
     }
 }
