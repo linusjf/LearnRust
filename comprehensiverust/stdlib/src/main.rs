@@ -56,4 +56,15 @@ fn vectors() {
     // Remove consecutive duplicates.
     v3.dedup();
     println!("{v3:?}");
+    for i in 0..10 {
+        print!("{:#?} ", v3.get(i));
+    }
+    println!();
+    for e in &mut v3 {
+        *e += 50;
+    }
+    for i in 0..10 {
+        print!("{:#?} ", v3.get(i));
+    }
+    println!();
 }
