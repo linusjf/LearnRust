@@ -33,6 +33,15 @@ pub fn main() {
     for i in (0..10).step_by(2) {
         println!("i: {i}");
     }
+    let mut v = vec![10, 20, 30];
+    for x in v.iter_mut() {
+        println!("x: {x}");
+        *x = *x - 10;
+        println!("x: {x}");
+    }
+    for x in v.iter_mut() {
+        println!("x: {x}");
+    }
 }
 
 fn second_word_to_upper(s: &str) -> Option<String> {
