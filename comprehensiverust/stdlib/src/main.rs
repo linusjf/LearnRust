@@ -114,4 +114,15 @@ fn hashmaps() {
         ("The Hunger Games".to_string(), 374),
     ]);
     println!("{page_counts:#?}");
+    let mut page_counts = HashMap::from([
+        ("Harry Potter and the Sorcerer's Stone", 336),
+        ("The Hunger Games", 374),
+    ]);
+    println!("{page_counts:#?}");
+    let pc1 = page_counts
+        .get("Harry Potter and the Sorcerer's Stone")
+        .unwrap_or(&336);
+    println!("{pc1:#?}");
+    let pc2 = page_counts.entry("The Hunger Games").or_insert(374);
+    println!("{pc2:#?}");
 }
