@@ -8,4 +8,6 @@ fn options() {
     println!("first: {first:?}");
     let idx: Result<usize, usize> = numbers.binary_search(&10);
     println!("idx: {idx:?}");
+    let idx: Result<usize, usize> = numbers.binary_search(&15);
+    println!("idx: {idx:?}");
 }
