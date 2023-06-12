@@ -5,6 +5,7 @@ fn main() {
     strings();
     vectors();
     hashmaps();
+    boxed();
 }
 
 fn options() {
@@ -125,4 +126,10 @@ fn hashmaps() {
     println!("{pc1:#?}");
     let pc2 = page_counts.entry("The Hunger Games").or_insert(374);
     println!("{pc2:#?}");
+}
+
+fn boxed() {
+    let five = Box::new(5);
+    println!("five: {}", five);
+    println!("five: {}", *five);
 }
