@@ -26,6 +26,13 @@ pub fn main() {
     while let Some(x) = iter.next() {
         println!("x: {x}");
     }
+    let v = vec![10, 20, 30];
+    for x in v {
+        println!("x: {x}");
+    }
+    for i in (0..10).step_by(2) {
+        println!("i: {i}");
+    }
 }
 
 fn second_word_to_upper(s: &str) -> Option<String> {
