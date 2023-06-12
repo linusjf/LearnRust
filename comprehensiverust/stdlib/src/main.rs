@@ -1,4 +1,7 @@
+#![allow(dead_code)]
+use std::cell::RefCell;
 use std::collections::HashMap;
+use std::rc::{Rc, Weak};
 
 fn main() {
     options();
@@ -6,6 +9,7 @@ fn main() {
     vectors();
     hashmaps();
     boxed();
+    references();
 }
 
 fn options() {
@@ -144,4 +148,30 @@ fn boxed() {
 enum List<T> {
     Cons(T, Box<List<T>>),
     Nil,
+}
+
+#[derive(Debug)]
+struct Node {
+    value: i64,
+    parent: Option<Weak<RefCell<Node>>>,
+    children: Vec<Rc<RefCell<Node>>>,
+}
+
+fn references() {
+    let a = Rc::new(10);
+    let b = Rc::clone(&a);
+    println!("a: {a}");
+    println!("b: {b}");
+    let root = Rc::new(RefCell::new(Node {
+        value: 42,
+        parent: None,
+        children: vec![],
+    }));
+    let child = Rc::new(RefCell::new(Node {
+        value: 43,
+        children: vec![],
+        parent: Some(Rc::downgrade(&root)),
+    }));
+    root.borrow_mut().children.push(child);
+    println!("graph: {root:#?}");
 }
