@@ -2,6 +2,7 @@
 mod blocks;
 mod enums;
 mod health;
+mod ifs;
 mod iter;
 mod library;
 mod methods;
@@ -46,6 +47,7 @@ fn main() {
     health::main();
     polygon::main();
     blocks::main();
+    ifs::main();
 }
 
 fn hello() {
