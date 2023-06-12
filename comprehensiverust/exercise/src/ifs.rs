@@ -20,6 +20,12 @@ pub fn main() {
         x = if x % 2 == 0 { x / 2 } else { 3 * x + 1 };
     }
     println!("Final x: {x}");
+    let v = vec![10, 20, 30];
+    let mut iter = v.into_iter();
+
+    while let Some(x) = iter.next() {
+        println!("x: {x}");
+    }
 }
 
 fn second_word_to_upper(s: &str) -> Option<String> {
