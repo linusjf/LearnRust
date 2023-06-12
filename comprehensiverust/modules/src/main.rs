@@ -13,4 +13,28 @@ mod bar {
 fn main() {
     foo::do_something();
     bar::do_something();
+    outer::public();
+}
+
+mod outer {
+    fn private() {
+        println!("outer::private");
+    }
+
+    pub fn public() {
+        println!("outer::public");
+        inner::public();
+    }
+
+    mod inner {
+        fn private() {
+            println!("outer::inner::private");
+        }
+
+        pub fn public() {
+            println!("outer::inner::public");
+            super::private();
+            private();
+        }
+    }
 }
