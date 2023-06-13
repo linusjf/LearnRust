@@ -67,6 +67,8 @@ fn main() {
     println!("{a:?} not_equals {b:?}: {}", a.not_equal(&b));
     println!("{a:?} equal {b:?}: {}", a.equals(&b));
     println!("{a:?} not_equal {b:?}: {}", a.not_equal(&b));
+    println!("{a:?} equal {b:?}: {}", a.equals(&b));
+    println!("{a:?} not_equal {b:?}: {}", a.not_equals(&b));
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
@@ -105,5 +107,18 @@ trait Equal {
 trait NotEqual: Equal {
     fn not_equal(&self, other: &Self) -> bool {
         !self.equals(other)
+    }
+}
+
+trait NotEquals {
+    fn not_equals(&self, other: &Self) -> bool;
+}
+
+impl<T> NotEquals for T
+where
+    T: Equals,
+{
+    fn not_equals(&self, other: &Self) -> bool {
+        !self.equal(other)
     }
 }
