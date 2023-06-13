@@ -1,3 +1,4 @@
+use std::fmt::Display;
 trait Pet {
     fn name(&self) -> String;
 }
@@ -76,6 +77,8 @@ fn main() {
     println!("{many}");
     let many_more = add_42_millions(10_000_000);
     println!("{many_more}");
+    let x = get_x("foo");
+    println!("{x}");
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
@@ -141,4 +144,8 @@ where
 //   fn add_42_millions<T: Into<i32>>(x: T) -> i32 {
 fn add_42_millions(x: impl Into<i32>) -> i32 {
     x.into() + 42_000_000
+}
+
+fn get_x(name: impl Display) -> impl Display {
+    format!("Hello, {name}!")
 }
