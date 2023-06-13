@@ -1,3 +1,5 @@
+mod iterators;
+
 use std::fmt::Display;
 trait Pet {
     fn name(&self) -> String;
@@ -79,6 +81,7 @@ fn main() {
     println!("{many_more}");
     let x = get_x("foo");
     println!("{x}");
+    iterators::main();
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
