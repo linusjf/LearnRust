@@ -53,4 +53,19 @@ fn main() {
     );
     println!("{}", std::mem::size_of::<&dyn Pet>());
     println!("{}", std::mem::size_of::<Box<dyn Pet>>());
+    let p1 = Player::default();
+    let p2 = p1.clone();
+    println!(
+        "Is {:?}\nequal to {:?}?\nThe answer is {}!",
+        &p1,
+        &p2,
+        if p1 == p2 { "yes" } else { "no" }
+    );
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
+struct Player {
+    name: String,
+    strength: u8,
+    hit_points: u8,
 }
