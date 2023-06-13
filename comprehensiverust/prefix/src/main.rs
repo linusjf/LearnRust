@@ -1,5 +1,16 @@
 #![allow(unused_variables, dead_code)]
 
+pub fn matches(prefix: &str, request_path: &str) {
+    // ANCHOR_END: prefix_matches
+    let prefixes = prefix.split('/');
+    let request_paths = request_path
+        .split('/')
+        .map(|p| Some(p))
+        .chain(std::iter::once(None));
+    for path in request_paths {
+        println!("{:#?}", path);
+    }
+}
 // ANCHOR: prefix_matches
 pub fn prefix_matches(prefix: &str, request_path: &str) -> bool {
     // ANCHOR_END: prefix_matches
@@ -81,4 +92,5 @@ fn main() {
         "/v1/publishers/*/books",
         "/v1/publishers/foo/booksByAuthor"
     ));
+    matches("/v1/publishers/*/books", "/v1/publishers")
 }
