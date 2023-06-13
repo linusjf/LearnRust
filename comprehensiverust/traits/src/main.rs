@@ -65,6 +65,8 @@ fn main() {
     let b = Centimeter(20);
     println!("{a:?} equals {b:?}: {}", a.equal(&b));
     println!("{a:?} not_equals {b:?}: {}", a.not_equal(&b));
+    println!("{a:?} equal {b:?}: {}", a.equals(&b));
+    println!("{a:?} not_equal {b:?}: {}", a.not_equal(&b));
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
@@ -87,5 +89,21 @@ struct Centimeter(i16);
 impl Equals for Centimeter {
     fn equal(&self, other: &Centimeter) -> bool {
         self.0 == other.0
+    }
+}
+
+impl Equal for Centimeter {
+    fn equals(&self, other: &Centimeter) -> bool {
+        self.0 == other.0
+    }
+}
+
+trait Equal {
+    fn equals(&self, other: &Self) -> bool;
+}
+
+trait NotEqual: Equal {
+    fn not_equal(&self, other: &Self) -> bool {
+        !self.equals(other)
     }
 }
