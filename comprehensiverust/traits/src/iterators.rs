@@ -18,6 +18,12 @@ pub fn main() {
     let fib = Fibonacci { curr: 0, next: 1 };
     for (i, n) in fib.enumerate().take(150) {
         print!("fib({i}): {n} ");
-        println!();
     }
+    println!();
+    let primes = vec![2, 3, 5, 7];
+    let prime_squares = primes
+        .into_iter()
+        .map(|prime| prime * prime)
+        .collect::<Vec<_>>();
+    println!("{:#?}", prime_squares);
 }
