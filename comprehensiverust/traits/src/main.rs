@@ -32,4 +32,13 @@ fn main() {
 
     let captain_floof = Cat;
     greet(&captain_floof);
+    let pets: Vec<Box<dyn Pet>> = vec![
+        Box::new(Cat),
+        Box::new(Dog {
+            name: String::from("Fido"),
+        }),
+    ];
+    for pet in pets {
+        println!("Hello, {}!", pet.name());
+    }
 }
