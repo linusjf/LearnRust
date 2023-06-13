@@ -1,3 +1,4 @@
+mod frominto;
 mod iterators;
 
 use std::fmt::Display;
@@ -82,6 +83,7 @@ fn main() {
     let x = get_x("foo");
     println!("{x}");
     iterators::main();
+    frominto::main();
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
