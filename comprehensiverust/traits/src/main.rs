@@ -130,7 +130,10 @@ where
     }
 }
 
-fn duplicate<T: Clone>(a: T) -> (T, T) {
+fn duplicate<T: Clone>(a: T) -> (T, T)
+where
+    T: Clone,
+{
     (a.clone(), a.clone())
 }
 
