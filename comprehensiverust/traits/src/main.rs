@@ -1,5 +1,6 @@
 mod frominto;
 mod iterators;
+mod readwrite;
 
 use std::fmt::Display;
 trait Pet {
@@ -84,6 +85,7 @@ fn main() {
     println!("{x}");
     iterators::main();
     frominto::main();
+    let _ = readwrite::main();
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
