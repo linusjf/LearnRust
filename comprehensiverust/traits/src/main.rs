@@ -1,3 +1,4 @@
+mod addmul;
 mod default;
 mod drop;
 mod frominto;
@@ -90,6 +91,7 @@ fn main() {
     let _ = readwrite::main();
     drop::main();
     default::main();
+    addmul::main();
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
