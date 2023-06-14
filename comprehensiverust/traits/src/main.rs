@@ -1,3 +1,4 @@
+mod default;
 mod drop;
 mod frominto;
 mod iterators;
@@ -88,6 +89,7 @@ fn main() {
     frominto::main();
     let _ = readwrite::main();
     drop::main();
+    default::main();
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
