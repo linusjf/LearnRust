@@ -1,5 +1,7 @@
+use std::fs;
 use std::fs::File;
 use std::io::Read;
+use std::io::{self};
 use std::panic;
 
 fn main() {
@@ -18,7 +20,6 @@ fn main() {
         println!("hello!");
     });
     assert!(result.is_ok());
-
     let result = panic::catch_unwind(|| {
         panic!("oh no!");
     });
@@ -28,4 +29,19 @@ fn main() {
         println!("v[100]: {}", v[100]);
     });
     assert!(result.is_err());
+    let username = read_username("config.dat");
+    println!("username or error: {username:?}");
+}
+
+fn read_username(path: &str) -> Result<String, io::Error> {
+    let username_file_result = fs::File::open(path);
+    let mut username_file = match username_file_result {
+        Ok(file) => file,
+        Err(err) => return Err(err),
+    };
+    let mut username = String::new();
+    match username_file.read_to_string(&mut username) {
+        Ok(_) => Ok(username),
+        Err(err) => Err(err),
+    }
 }
