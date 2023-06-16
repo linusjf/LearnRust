@@ -1,7 +1,7 @@
 [profile.release]
 panic = "abort"
 [profile.dev]
-panic = "abort"
+# panic = "abort"
 [package]
 name = "errorhandling"
 version = "0.1.0"
