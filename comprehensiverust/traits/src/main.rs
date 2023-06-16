@@ -1,7 +1,9 @@
 mod addmul;
+mod closures;
 mod default;
 mod drop;
 mod frominto;
+mod gui;
 mod iterators;
 mod readwrite;
 
@@ -92,6 +94,8 @@ fn main() {
     drop::main();
     default::main();
     addmul::main();
+    closures::main();
+    gui::main();
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
