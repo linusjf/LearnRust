@@ -4,6 +4,7 @@ use std::io::Read;
 use std::io::{self};
 use std::panic;
 mod convert;
+mod deriveerror;
 
 fn main() {
     let file = File::open("diary.txt");
@@ -39,6 +40,8 @@ fn main() {
     let username = read_username("config.dat");
     println!("username or error: {username:?}");
     convert::main();
+    deriveerror::main();
+    fs::remove_file("config.dat").unwrap();
 }
 
 fn read_username(path: &str) -> Result<String, io::Error> {

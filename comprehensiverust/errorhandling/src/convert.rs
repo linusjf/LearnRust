@@ -45,4 +45,5 @@ pub fn main() {
     fs::write("con.dat", "alice").unwrap();
     let username = read_username("con.dat");
     println!("username or error: {username:?}");
+    fs::remove_file("con.dat").unwrap();
 }
