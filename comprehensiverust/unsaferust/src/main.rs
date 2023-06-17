@@ -46,6 +46,10 @@ fn main() {
         swap(&mut a, &mut b);
     }
     println!("a = {}, b = {}", a, b);
+    unsafe {
+        // Undefined behavior if abs misbehaves.
+        println!("Absolute value of -3 according to C: {}", abs(-3));
+    }
 }
 
 static HELLO_WORLD: &str = "Hello, world!";
@@ -80,4 +84,8 @@ unsafe fn swap(a: *mut u8, b: *mut u8) {
         *a = *b;
         *b = temp;
     }
+}
+
+extern "C" {
+    fn abs(input: i32) -> i32;
 }
