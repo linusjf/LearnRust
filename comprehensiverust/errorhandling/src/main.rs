@@ -3,6 +3,7 @@ use std::fs::File;
 use std::io::Read;
 use std::io::{self};
 use std::panic;
+mod convert;
 
 fn main() {
     let file = File::open("diary.txt");
@@ -37,6 +38,7 @@ fn main() {
     fs::write("config.dat", "alice").unwrap();
     let username = read_username("config.dat");
     println!("username or error: {username:?}");
+    convert::main();
 }
 
 fn read_username(path: &str) -> Result<String, io::Error> {
