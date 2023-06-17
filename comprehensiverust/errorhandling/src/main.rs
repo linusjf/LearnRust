@@ -29,6 +29,13 @@ fn main() {
         println!("v[100]: {}", v[100]);
     });
     assert!(result.is_err());
+    //fs::write("config.dat", "alice").unwrap();
+    let username = read_username("config.dat");
+    println!("username or error: {username:?}");
+    fs::write("config.dat", "").unwrap();
+    let username = read_username("config.dat");
+    println!("username or error: {username:?}");
+    fs::write("config.dat", "alice").unwrap();
     let username = read_username("config.dat");
     println!("username or error: {username:?}");
 }
