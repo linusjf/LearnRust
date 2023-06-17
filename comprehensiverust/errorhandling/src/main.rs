@@ -5,6 +5,7 @@ use std::io::{self};
 use std::panic;
 mod convert;
 mod deriveerror;
+mod dynamicerror;
 
 fn main() {
     let file = File::open("diary.txt");
@@ -41,6 +42,7 @@ fn main() {
     println!("username or error: {username:?}");
     convert::main();
     deriveerror::main();
+    dynamicerror::main();
     fs::remove_file("config.dat").unwrap();
 }
 
