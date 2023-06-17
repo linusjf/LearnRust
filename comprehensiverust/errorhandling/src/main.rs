@@ -3,6 +3,7 @@ use std::fs::File;
 use std::io::Read;
 use std::io::{self};
 use std::panic;
+mod context;
 mod convert;
 mod deriveerror;
 mod dynamicerror;
@@ -43,6 +44,7 @@ fn main() {
     convert::main();
     deriveerror::main();
     dynamicerror::main();
+    context::main();
     fs::remove_file("config.dat").unwrap();
 }
 
