@@ -1,4 +1,7 @@
+mod testmodules;
 #[allow(dead_code)]
 mod unittests;
 
-fn main() {}
+fn main() {
+    testmodules::main();
+}
