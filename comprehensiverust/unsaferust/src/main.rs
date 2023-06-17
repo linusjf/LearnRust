@@ -38,6 +38,14 @@ fn main() {
     // Not upholding the UTF-8 encoding requirement breaks memory safety!
     // println!("emoji: {}", unsafe { emojis.get_unchecked(0..3) });
     // println!("char count: {}", count_chars(unsafe { emojis.get_unchecked(0..3) }));
+    let mut a = 42;
+    let mut b = 66;
+
+    // Safe because ...
+    unsafe {
+        swap(&mut a, &mut b);
+    }
+    println!("a = {}, b = {}", a, b);
 }
 
 static HELLO_WORLD: &str = "Hello, world!";
@@ -58,4 +66,18 @@ union MyUnion {
 
 fn count_chars(s: &str) -> usize {
     s.chars().map(|_| 1).sum()
+}
+
+/// Swaps the values pointed to by the given pointers.
+///
+/// # Safety
+///
+/// The pointers must be valid and properly aligned.
+#[deny(unsafe_op_in_unsafe_fn)]
+unsafe fn swap(a: *mut u8, b: *mut u8) {
+    unsafe {
+        let temp = *a;
+        *a = *b;
+        *b = temp;
+    }
 }
