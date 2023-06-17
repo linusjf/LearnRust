@@ -1,6 +1,6 @@
 use anyhow::{bail, Context, Result};
+use std::fs;
 use std::io::Read;
-use std::{fs, io};
 
 fn read_username(path: &str) -> Result<String> {
     let mut username = String::with_capacity(100);
