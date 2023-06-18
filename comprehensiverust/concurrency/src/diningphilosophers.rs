@@ -13,6 +13,7 @@
 // limitations under the License.
 
 // ANCHOR: Philosopher
+use rand::Rng;
 use std::sync::{mpsc, Arc, Mutex};
 use std::thread;
 use std::time::Duration;
@@ -45,7 +46,8 @@ impl Philosopher {
 
         // ANCHOR: Philosopher-eat-end
         println!("{} is eating...", &self.name);
-        thread::sleep(Duration::from_millis(10));
+        let mut rng = rand::thread_rng();
+        thread::sleep(Duration::from_millis(rng.gen_range(0..10)));
     }
 }
 
