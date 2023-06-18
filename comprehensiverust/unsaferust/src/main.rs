@@ -50,6 +50,8 @@ fn main() {
         // Undefined behavior if abs misbehaves.
         println!("Absolute value of -3 according to C: {}", abs(-3));
     }
+    let a: u32 = 200000;
+    println!("{:#?}", a.as_bytes());
 }
 
 static HELLO_WORLD: &str = "Hello, world!";
@@ -89,3 +91,18 @@ unsafe fn swap(a: *mut u8, b: *mut u8) {
 extern "C" {
     fn abs(input: i32) -> i32;
 }
+
+use std::mem::size_of_val;
+use std::slice;
+
+/// ...
+/// # Safety
+/// The type must have a defined representation and no padding.
+pub unsafe trait AsBytes {
+    fn as_bytes(&self) -> &[u8] {
+        unsafe { slice::from_raw_parts(self as *const Self as *const u8, size_of_val(self)) }
+    }
+}
+
+// Safe because u32 has a defined representation and no padding.
+unsafe impl AsBytes for u32 {}
