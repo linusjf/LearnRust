@@ -4,6 +4,8 @@ use std::sync::Mutex;
 use std::thread;
 use std::time::Duration;
 
+mod diningphilosophers;
+
 fn main() {
     let handle = thread::spawn(|| {
         for i in 1..10 {
@@ -93,6 +95,7 @@ fn main() {
     }
     println!("v: {:?}", v.lock().unwrap());
     example();
+    diningphilosophers::main();
 }
 
 fn example() {
