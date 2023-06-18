@@ -1,3 +1,5 @@
+mod safeffiwrapper;
+
 fn main() {
     let mut num = 5;
 
@@ -52,6 +54,8 @@ fn main() {
     }
     let a: u32 = 200000;
     println!("{:#?}", a.as_bytes());
+    let res = safeffiwrapper::main();
+    println!("{:#?}", res);
 }
 
 static HELLO_WORLD: &str = "Hello, world!";
