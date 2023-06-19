@@ -4,6 +4,7 @@ use std::sync::Mutex;
 use std::thread;
 use std::time::Duration;
 
+mod asyncexample;
 mod diningphilosophers;
 
 fn main() {
@@ -96,6 +97,7 @@ fn main() {
     println!("v: {:?}", v.lock().unwrap());
     example();
     diningphilosophers::main();
+    asyncexample::main();
 }
 
 fn example() {
