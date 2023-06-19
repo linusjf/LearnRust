@@ -6,6 +6,7 @@ use std::time::Duration;
 
 mod asyncexample;
 mod diningphilosophers;
+mod tokioexample;
 
 fn main() {
     let handle = thread::spawn(|| {
@@ -98,6 +99,7 @@ fn main() {
     example();
     diningphilosophers::main();
     asyncexample::main();
+    tokioexample::main();
 }
 
 fn example() {
