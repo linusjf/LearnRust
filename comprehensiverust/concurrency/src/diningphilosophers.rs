@@ -26,6 +26,7 @@ struct Philosopher {
     left_fork: Arc<Mutex<Fork>>,
     right_fork: Arc<Mutex<Fork>>,
     thoughts: mpsc::SyncSender<String>,
+    id: usize,
 }
 
 // ANCHOR: Philosopher-think
@@ -41,8 +42,13 @@ impl Philosopher {
     fn eat(&self) {
         // ANCHOR_END: Philosopher-eat
         println!("{} is trying to eat", &self.name);
-        let _left = self.left_fork.lock().unwrap();
-        let _right = self.right_fork.lock().unwrap();
+        if self.id % 2 != 0 {
+            let _left = self.left_fork.lock().unwrap();
+            let _right = self.right_fork.lock().unwrap();
+        } else {
+            let _right = self.right_fork.lock().unwrap();
+            let _left = self.left_fork.lock().unwrap();
+        }
 
         // ANCHOR: Philosopher-eat-end
         println!("{} is eating...", &self.name);
@@ -63,27 +69,21 @@ pub fn main() {
 
     for i in 0..forks.len() {
         let tx = tx.clone();
-        let mut left_fork = forks[i].clone();
-        let mut right_fork = forks[(i + 1) % forks.len()].clone();
-
-        // To avoid a deadlock, we have to break the symmetry
-        // somewhere. This will swap the forks without deinitializing
-        // either of them.
-        if i == forks.len() - 1 {
-            std::mem::swap(&mut left_fork, &mut right_fork);
-        }
+        let left_fork = forks[i].clone();
+        let right_fork = forks[(i + 1) % forks.len()].clone();
 
         let philosopher = Philosopher {
             name: PHILOSOPHERS[i].to_string(),
             thoughts: tx,
             left_fork,
             right_fork,
+            id: i,
         };
 
         thread::spawn(move || {
             for _ in 0..100 {
-                philosopher.eat();
                 philosopher.think();
+                philosopher.eat();
             }
         });
     }
