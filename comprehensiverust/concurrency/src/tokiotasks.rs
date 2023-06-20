@@ -21,6 +21,10 @@ pub async fn main() -> io::Result<()> {
             let reply = match socket.read(&mut buf).await {
                 Ok(n) => {
                     let name = std::str::from_utf8(&buf[..n]).unwrap().trim();
+                    if name.to_ascii_uppercase() == "QUIT" {
+                        println!("Quitting program...");
+                        std::process::exit(0);
+                    }
                     format!("Thanks for dialing in, {name}!\n")
                 }
                 Err(e) => {

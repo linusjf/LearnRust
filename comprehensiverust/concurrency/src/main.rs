@@ -6,6 +6,7 @@ use std::time::Duration;
 
 mod asyncexample;
 mod diningphilosophers;
+mod tokiochannels;
 mod tokioexample;
 mod tokiotasks;
 
@@ -101,6 +102,7 @@ fn main() {
     diningphilosophers::main();
     asyncexample::main();
     tokioexample::main();
+    tokiochannels::main();
     let _ = tokiotasks::main();
 }
 
