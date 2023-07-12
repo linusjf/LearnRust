@@ -7,6 +7,6 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-num = "0.4.0"
+num = "0.4.1"
 image = "0.24.6"
 rayon = "1.7.0"
